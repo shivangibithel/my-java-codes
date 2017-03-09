@@ -1,32 +1,31 @@
-import java.awt.*;
 import java.applet.Applet;
-
+import java.awt.Graphics;
 public class app extends Applet
 {
-	String s ="";
-	Font f = new Font("Times New Roman" ,Font.BOLD , 50);
+	String s = "";
 	public void destroy()
 	{
-		System.out.println("in destroy");
+		System.out.println("In Destroy");
+	}
+	/*public void stop()
+	{
+		s += "Stop Called.";
 	}
 	public void start()
 	{
-		s= s+ "in start";
-	}
-	public void stop()
+		s += "Start Called.";
+	}*/
+	public void init()
 	{
-		s= s+ "in stop";
+		s += "Init Called.";
 	}
 	public void paint(Graphics g)
 	{
-		s= s+ "in paint";
-		g.drawString(s,50,50);
-		g.setFont(f);
-	}
-	public void init()
-	{
-		s= s+ "in init";
+		s += "Paint Called.";
+		g.drawString(s,10,10);
 	}
 }
-
-
+/*
+<applet code = app width = 500 height = 500>
+</applet>
+*/

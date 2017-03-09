@@ -2,85 +2,49 @@ import java.awt.Graphics;
 import java.applet.Applet;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.FontMetrics;
-public class all extends Applet 
-
+public class all extends Applet
 {
 	String str = "Scrolling Text";
-	int x = 0;
-	int y= 0;
-	int z =700;
+	int x1 = 0,x2 = 500, x3 = 0;
 	char scroll = 'r';
-	int width; 
-	Font f;
-	public void init()
-	{
-		
-		f = new Font("times new roman",Font.BOLD,20);
-		FontMetrics fm = getFontMetrics(f);
-		width = fm.stringWidth(str);	
-	}
 	public void paint(Graphics g)
 	{
-		
-	 g.drawString("hello", x,50);
-			  x+=1;
-			 
-		 if (x==700)
-		 {
-			 x=0;
-		
-		 }
-		 try
-		{
-			Thread.sleep(10);
-		}
-		catch(InterruptedException ex){}
-		repaint();
-		
-	
-		
-			 g.drawString(str,y,150);
+		g.setFont(new Font("times new roman",Font.BOLD,20));
+		g.setColor(Color.blue);
+		g.drawString(str,x1,50);
+		x1++;
+		if(x1 == 500)
+			x1 = 0;
+		g.drawString(str,x2,150);
+		x2--;
+		if(x2 == 0)
+			x2 = 500;
+		g.drawString(str,x3,250);
 		if(scroll == 'r')
 		{
-			y++;
-			if(x == 700-width)
+			x3++;
+			if(x3 == 500)
 				scroll = 'l';
 		}
 		else
 		{
-			y--;
-			if(y == 0)
+			x3--;
+			if(x3 == 0)
 				scroll = 'r';
 		}
-		try
-		{
-			Thread.sleep(0);
-		}
-		catch(InterruptedException fxx){}
-		repaint();
-		
-		
-		{
-			Font f = new Font("times new roman",Font.BOLD,20);
-		FontMetrics fm = getFontMetrics(f);
-		int width = fm.stringWidth(str);	
-		g.setFont(f);
-		g.setColor(Color.blue);
-		g.drawString(str,z,300);
-		z--;
-		if(z == (-width))
-			z = 700;
-		}
-		try
-		{
-			Thread.sleep(0);
-		}
-		catch(InterruptedException gxx){}
+		rest();	
 		repaint();
 	}
+	void rest()
+	{
+		try
+		{
+			Thread.sleep(10);
+		}
+		catch(InterruptedException x){}
 	}
+}
 /*
-<applet code = all width = 700 height = 700>
+<applet code = all width = 500 height = 500>
 </applet>
-*/	
+*/
