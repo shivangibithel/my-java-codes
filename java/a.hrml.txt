@@ -1,0 +1,7 @@
+<center>
+<h1>
+My First Applet
+</h1>
+</center>
+<applet code = app width = 300 height = 300>
+</applet>
